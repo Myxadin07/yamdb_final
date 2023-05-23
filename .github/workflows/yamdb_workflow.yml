@@ -33,12 +33,20 @@ jobs:
       run: |
         # запуск проверки проекта по flake8
         python -m flake8
-        # перейти в папку, содержащую manage.py — 
-        #<корневая_папка_infra_actions>/<папка_проекта>/manage.py
-        cd api_yamdb/manage.py
-        # запустить написанные разработчиком тесты
-        python manage.py test
-
+    - name: Pytest
+      run: |
+        pytest
+    - name: Send message if Tests failed
+      if: ${{ failure() }}
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          ${{ steps.run_test.outcome }}
+          ${{ steps.run_test.conclusion }}
+          Ошибка при тестировании - ${{ github.repository }}
+          https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
   build_and_push_to_docker_hub:
       name: Push Docker image to Docker Hub
