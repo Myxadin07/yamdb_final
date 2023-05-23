@@ -1,8 +1,7 @@
-from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
-from users.validators import meUsername
-
+from users.validators import meusername
 
 USER = 'user'
 MODERATOR = 'moderator'
@@ -21,7 +20,7 @@ class User(AbstractUser):
         verbose_name='Имя пользователя',
         max_length=150,
         unique=True,
-        validators=[UnicodeUsernameValidator(), meUsername],
+        validators=[UnicodeUsernameValidator(), meusername],
     )
 
     first_name = models.CharField(max_length=150, blank=True)

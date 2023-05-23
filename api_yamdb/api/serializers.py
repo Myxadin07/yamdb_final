@@ -3,11 +3,10 @@ from django.db.models import Avg
 from django.forms import ValidationError
 from django.shortcuts import get_object_or_404
 from rest_framework import serializers
-
 from reviews.models import Comment, Review
 from titles.models import Category, Genre, Title
 from users.models import User
-from users.validators import meUsername
+from users.validators import meusername
 
 
 class GenreSerializer(serializers.ModelSerializer):
@@ -123,7 +122,7 @@ class CreateUserSerializer(serializers.Serializer):
 
     username = serializers.CharField(
         max_length=150, required=True,
-        validators=[UnicodeUsernameValidator(), meUsername, ]
+        validators=[UnicodeUsernameValidator(), meusername, ]
     )
 
     class Meta:

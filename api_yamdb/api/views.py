@@ -4,16 +4,13 @@ from django.conf import settings
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
-
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters, status, viewsets, permissions
+from rest_framework import filters, permissions, status, viewsets
 from rest_framework.decorators import action, api_view, permission_classes
-from rest_framework.permissions import (
-    AllowAny, IsAuthenticated, IsAuthenticatedOrReadOnly
-)
+from rest_framework.permissions import (AllowAny, IsAuthenticated,
+                                        IsAuthenticatedOrReadOnly)
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken
-
 from reviews.models import Review
 from titles.models import Category, Genre, Title
 from users.models import User
@@ -21,9 +18,8 @@ from users.permissions import IsAdminUser
 
 from .filters import TitleFilter
 from .mixins import GetListCreateDeleteMixin
-from .permissions import (
-    IsModeratorOrReadOnly, IsAuthorOrReadOnly, IsAdminUserOrReadOnly
-)
+from .permissions import (IsAdminUserOrReadOnly, IsAuthorOrReadOnly,
+                          IsModeratorOrReadOnly)
 from .serializers import (CategorySerializer, CommentSerializer,
                           CreateTokenSerializer, CreateUserSerializer,
                           GenreSerializer, ReviewSerializer,
@@ -154,19 +150,19 @@ def create_user(request):
         )
 
 
-@api_view(["POST"])
+@api_view(['POST'])
 @permission_classes([permissions.AllowAny])
 def create_token(request):
     serializer = CreateTokenSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
     user = get_object_or_404(
         User,
-        username=serializer.validated_data["username"]
+        username=serializer.validated_data['username']
     )
     if default_token_generator.check_token(
-        user, serializer.validated_data["confirmation_code"]
+        user, serializer.validated_data['confirmation_code']
     ):
         token = AccessToken.for_user(user)
-        return Response({"token": str(token)}, status=status.HTTP_200_OK)
+        return Response({'token': str(token)}, status=status.HTTP_200_OK)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

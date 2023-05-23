@@ -1,5 +1,5 @@
-from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
+from django.core.validators import RegexValidator
 from django.utils.translation import gettext_lazy as _
 
 
@@ -8,7 +8,7 @@ class UsernameValidator(RegexValidator):
     flags = 0
 
 
-def meUsername(value):
+def meusername(value):
     if value == "me":
         raise ValidationError(
             _('username %(value)s is not permited'),
