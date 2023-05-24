@@ -105,15 +105,6 @@ jobs:
             echo DB_HOST=${{ secrets.DB_HOST }} >> .env
             echo DB_PORT=${{ secrets.DB_PORT }} >> .env
             sudo docker-compose up -d
-      - name: Send message if deploy failed
-          if: ${{ failure() }}
-          uses: appleboy/telegram-action@master
-          with:
-            to: ${{ secrets.TELEGRAM_TO }}
-            token: ${{ secrets.TELEGRAM_TOKEN }}
-            message: |
-              Ошибка при deploy  - ${{ github.repository }}
-              https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
 
   send_message:
