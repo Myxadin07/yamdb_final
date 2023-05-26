@@ -1,7 +1,7 @@
 # CI/CD для проекта API YAMDB
 
 ## Технологический стек
-[![Django-app workflow](https://github.com/Myxadin07/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)](https://github.com/Myxadin07/yamdb_final/actions/workflows/yamdb_workflow.yml)
+[![Django-app workflow](https://github.com/Myxadin07/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg?event=push)](https://github.com/Myxadin07/yamdb_final/actions/workflows/yamdb_workflow.yml)
 [![Python](https://img.shields.io/badge/-Python-464646?style=flat&logo=Python&logoColor=FFD700&color=8B008B)](https://www.python.org/)
 [![Django](https://img.shields.io/badge/-Django-464646?style=flat&logo=Django&logoColor=FFD700&color=8B008B)](https://www.djangoproject.com/)
 [![Django REST Framework](https://img.shields.io/badge/-Django%20REST%20Framework-464646?style=flat&logo=Django%20REST%20Framework&logoColor=FFD700&color=8B008B)](https://www.django-rest-framework.org/)
