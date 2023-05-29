@@ -1,6 +1,5 @@
 # CI/CD для проекта API YAMDB
 
-
 Сайт доступен по следующему адресу: http://158.160.29.130/api/v1/
 
 [![GITHUB-BADGE](https://github.com/Myxadin07/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)](https://github.com/Myxadin07/yamdb_final/actions/workflows/yamdb_workflow.yml)
@@ -90,6 +89,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 ```
 sudo  docker-compose --version  -- должен выдать: Docker Compose version v2.18.1
 ```
+новый ssh
 
 ## Контакты
 
