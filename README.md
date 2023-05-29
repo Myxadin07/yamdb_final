@@ -89,7 +89,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 ```
 sudo  docker-compose --version  -- должен выдать: Docker Compose version v2.18.1
 ```
-новый ssh
+новый ssh - работает ли? 
 
 ## Контакты
 
